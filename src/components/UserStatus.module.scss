@@ -1,0 +1,23 @@
+@import "~src/theme";
+
+.UserStatus {
+  display: flex;
+  
+  &:hover {
+    text-decoration: underline;
+  }
+  
+  img {
+    vertical-align: middle;
+    height: $u3 - $u1;
+    padding: 1px;
+    margin-right: 0.5ch;
+    border: solid  1px $color-primary-font;
+    border-radius: 50%;
+    box-shadow: 0 0 1px 0px $color-primary-font inset, 0 0 1px 0px $color-primary-font;
+  }
+  
+  label {
+    vertical-align: middle;
+  }
+}

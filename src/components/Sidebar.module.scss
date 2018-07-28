@@ -1,0 +1,39 @@
+@import "~src/theme";
+
+.Sidebar {
+  position: fixed;
+  left: 0;
+  top: $u3;
+  width: $u3;
+  height: 100vh;
+  display: flex;
+  flex-flow: column;
+  background-color: $color-secondary;
+  color: $color-secondary-font;
+}
+
+.Action {
+  svg {
+    width: 70%;
+    height: auto;
+    margin: $u1 $u1 / 2;
+    stroke-width: 1.5;
+    cursor: pointer;
+    
+    &:hover:not(.disabled):not(.loading) {
+      color: $color-highlight;
+    }
+  }
+  
+  .disabled {
+    color: $color-disabled;
+  }
+
+  .loading {
+    @extend .disabled;
+
+    animation:spin 0.5s linear infinite;
+    @keyframes spin { 100% { transform:rotate(45deg); } }
+
+  }
+}

@@ -1,0 +1,36 @@
+@import '~src/theme';
+
+.SongPage {
+  display: flex;
+  flex-flow: row;
+  padding: $u2;
+  margin: $u3 0 0 $u3;
+  
+  .content {
+    display: flex;
+    flex-flow: column;
+    
+    &>input {
+      border: none;
+      outline: none;
+
+      background-color: $color-background;
+      color: $color-background-font;
+      
+      &:hover:not(:disabled), &:focus {
+        border: 1px solid;
+      }
+    }
+  }
+
+
+  .title {
+    font-size: 1.6em;
+  }
+  
+  .author {
+    font-size: 1.2em;
+    font-style: italic;
+    margin-bottom: $u2;
+  }
+}

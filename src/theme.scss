@@ -1,0 +1,34 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat|Pinyon+Script|Source+Code+Pro');
+
+// $color-primary: #333536;
+$color-primary: #000000;
+$color-secondary: #000000;
+$color-background: #FFFFFF;
+$color-primary-font: #FFFFFF;
+$color-secondary-font: #FFFFFF;
+$color-background-font: #000000;
+$color-accent: rgb(199, 15, 15);
+$color-highlight: rgb(44, 72, 231);
+$color-disabled: rgb(88, 88, 88);
+
+
+$u1: 10px;
+$u2: 25px;
+$u3: 50px;
+$u4: 100px;
+
+$font-main: 'Montserrat', sans-serif;
+$font-monospace: 'Source Code Pro', monospace;
+$font-brand: 'Pinyon Script', cursive;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: $font-main;
+}
+
+body {
+  background-color: $color-background;
+  color: $color-background-font;
+}

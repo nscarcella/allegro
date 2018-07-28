@@ -1,0 +1,26 @@
+@import "~src/theme";
+
+.Header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: $u3;
+  z-index: 2;
+  display: flex;
+  flex-flow: row;
+  background-color: $color-primary;
+  color: $color-primary-font;
+  padding: 0 $u2;
+  border-bottom: 2px solid $color-accent;
+  
+  h1 {
+    font-size: 2.4em;
+    font-family: $font-brand;
+    font-weight: bold;
+    line-height: $u3;
+  }
+  
+  &>div {
+    margin: auto 0 auto auto;
+  }
+}

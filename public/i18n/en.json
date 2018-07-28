@@ -1,0 +1,10 @@
+{
+  "UserStatus": {
+    "signIn": "Sign In",
+    "signOut": "Sign Out"
+  },
+  "Song": {
+    "save": "save",
+    "edit": "edit"
+  }
+}
