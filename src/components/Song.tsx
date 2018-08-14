@@ -95,6 +95,7 @@ const ChordsOverlay = compose<ChordsOverlayInnerProps, ChordsOverlayOuterProps>(
 interface EditSongOuterProps {
   song: Song,
   setSong: (next: Song) => void,
+  disabled?: boolean, // TODO:
 }
 
 interface EditSongInnerProps extends EditSongOuterProps {

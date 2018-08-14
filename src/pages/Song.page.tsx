@@ -76,7 +76,7 @@ const SongPage = compose<SongPageInnerProps, SongPageOuterProps>(
             <div className={$.content}>
               <input disabled className={$.title} value={song.title} onChange={handleTitleChange} />
               <input disabled className={$.author} value={song.author} onChange={handleAuthorChange} />
-              <EditSong song={song} setSong={setSong} />
+              <EditSong disabled song={song} setSong={setSong} />
             </div>
           </div>
         )

@@ -71,6 +71,12 @@
     "@types/node" "*"
     "@types/react" "*"
 
+"@types/react-dragtastic@^2.4.1":
+  version "2.4.1"
+  resolved "https://registry.yarnpkg.com/@types/react-dragtastic/-/react-dragtastic-2.4.1.tgz#6a48f48345487b470c1df3db66f8fe171bdb3164"
+  dependencies:
+    "@types/react" "*"
+
 "@types/react-router-dom@^4.3.0":
   version "4.3.0"
   resolved "https://registry.yarnpkg.com/@types/react-router-dom/-/react-router-dom-4.3.0.tgz#c91796d02deb3a5b24bc1c5db4a255df0d18b8b5"
@@ -5940,9 +5946,9 @@ react-dom@^16.4.1:
     object-assign "^4.1.1"
     prop-types "^15.6.0"
 
-react-dragtastic@../../Javascript/react-dragtastic/react-dragtastic-v2.4.3.tgz:
+react-dragtastic@^2.4.3:
   version "2.4.3"
-  resolved "../../Javascript/react-dragtastic/react-dragtastic-v2.4.3.tgz#37af28d4dc3ad18bd821cbacb94e763e6d324418"
+  resolved "https://registry.yarnpkg.com/react-dragtastic/-/react-dragtastic-2.4.3.tgz#9cf5531c45cc52020b30f454f9b219852307f6ef"
   dependencies:
     prop-types "^15.6.0"
 
