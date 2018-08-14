@@ -1,7 +1,7 @@
 import GoogleUser = gapi.auth2.GoogleUser
 
 const GOOGLE_CONFIG = {
-  clientId: '810823480274-dtv4gsl3uslm10l8nn4ngd2geb5migqi.apps.googleusercontent.com',
+  clientId: '810823480274-iv4ev15hmvb23aerh7oq0n9vggflahdf.apps.googleusercontent.com',
   discoveryDocs: ['https://www.googleapis.com/discovery/v1/apis/drive/v3/rest'],
   scopes: [
     'https://www.googleapis.com/auth/drive.install',
