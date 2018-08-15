@@ -1,4 +1,4 @@
-import { EditSong } from '@components/Song'
+import SongEditor from '@components/Song'
 import { readFile } from '@services/google'
 import { History } from 'history'
 import { ChangeEventHandler } from 'react'
@@ -65,7 +65,7 @@ const SongPage = compose<SongPageInnerProps, SongPageOuterProps>(
           <div className={$.content}>
             <input className={$.title} value={song.title} onChange={handleTitleChange} />
             <input className={$.author} value={song.author} onChange={handleAuthorChange} />
-            <EditSong song={song} setSong={setSong} />
+            <SongEditor song={song} setSong={setSong} />
           </div>
         </div>
       ) : (
@@ -76,7 +76,7 @@ const SongPage = compose<SongPageInnerProps, SongPageOuterProps>(
             <div className={$.content}>
               <input disabled className={$.title} value={song.title} onChange={handleTitleChange} />
               <input disabled className={$.author} value={song.author} onChange={handleAuthorChange} />
-              <EditSong disabled song={song} setSong={setSong} />
+              <SongEditor disabled song={song} setSong={setSong} />
             </div>
           </div>
         )

@@ -16,6 +16,7 @@ interface ChordsOverlayOuterProps {
   cols: number,
   chords: Chords,
   setChords: (next: Chords) => void,
+  disabled?: boolean,
 }
 
 interface ChordsOverlayInnerProps extends ChordsOverlayOuterProps {
@@ -42,7 +43,7 @@ const ChordsOverlay = compose<ChordsOverlayInnerProps, ChordsOverlayOuterProps>(
     },
   })
 
-)(({ rows, cols, chords, setChords, moveChordTo, inputChord, chordInput, setChordInput }) =>
+)(({ disabled, rows, cols, chords, setChords, moveChordTo, inputChord, chordInput, setChordInput }) =>
 
   <div className={$.ChordsOverlay}>
     {[...Array(rows).keys()].map(row =>
@@ -51,19 +52,20 @@ const ChordsOverlay = compose<ChordsOverlayInnerProps, ChordsOverlayOuterProps>(
         const chordEntry = chords.find(c => c.col === col && c.row === row)
         const chord = chordEntry && chordEntry.chord
 
-        return chord
-          ? [
-            <Draggable id={`${index}`} key={`${index}`} type='chord' delay={1} data={chordEntry}>{({ events }) =>
-              <div className={$.chord}{...events}>{chord}</div>
-            }</Draggable>,
+        return disabled ? <div key={`${index}`} className={$.chord}>{chord}</div> :
+          chord
+            ? [
+              <Draggable id={`${index}`} key={`${index}`} type='chord' delay={1} data={chordEntry}>{({ events }) =>
+                <div className={`${$.chord} ${$.draggable}`}{...events}>{chord}</div>
+              }</Draggable>,
 
-            <DragComponent key={`~${index}`} for={`${index}`}>{({ x, y }) => (
-              <div className={`${$.chord} ${$.dragging}`} style={{ left: x - 8, top: y - 8 }}>{chord}</div>
-            )}</DragComponent>,
-          ] :
-          <Droppable key={`${index}`} accepts='chord' onDrop={moveChordTo({ col, row })}>{({ events, isDragging }) =>
-            <div className={isDragging ? $.dropzone : undefined} {...events} onDoubleClick={inputChord({ col, row })} />
-          }</Droppable>
+              <DragComponent key={`~${index}`} for={`${index}`}>{({ x, y }) => (
+                <div className={`${$.chord} ${$.dragging}`} style={{ left: x - 8, top: y - 8 }}>{chord}</div>
+              )}</DragComponent>,
+            ] :
+            <Droppable key={`${index}`} accepts='chord' onDrop={moveChordTo({ col, row })}>{({ events, isDragging }) =>
+              <div className={isDragging ? $.dropzone : $.chord} {...events} onDoubleClick={inputChord({ col, row })} />
+            }</Droppable>
       }
       )} </div>
     )}
@@ -92,13 +94,13 @@ const ChordsOverlay = compose<ChordsOverlayInnerProps, ChordsOverlayOuterProps>(
 // EDIT SONG
 // ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 
-interface EditSongOuterProps {
+interface SongOuterProps {
   song: Song,
   setSong: (next: Song) => void,
-  disabled?: boolean, // TODO:
+  disabled?: boolean,
 }
 
-interface EditSongInnerProps extends EditSongOuterProps {
+interface SongInnerProps extends SongOuterProps {
   setChords: (chord: Chords) => void
   hasUnsavedChanges: boolean
   onLyricsChange: ChangeEventHandler<HTMLTextAreaElement>
@@ -107,9 +109,9 @@ interface EditSongInnerProps extends EditSongOuterProps {
   rows: number
 }
 
-export const EditSong = compose<EditSongInnerProps, EditSongOuterProps>(
+const Song = compose<SongInnerProps, SongOuterProps>(
 
-  withProps(({ song }: EditSongInnerProps) => {
+  withProps(({ song }: SongInnerProps) => {
     const verseLyrics = song.lyrics.split('\n')
 
     return {
@@ -118,7 +120,7 @@ export const EditSong = compose<EditSongInnerProps, EditSongOuterProps>(
     }
   }),
 
-  withHandlers<EditSongInnerProps, Partial<EditSongInnerProps>>({
+  withHandlers<SongInnerProps, Partial<SongInnerProps>>({
 
     setChords: ({ song, setSong }) => chords => setSong({ ...song, chords }),
 
@@ -207,11 +209,11 @@ export const EditSong = compose<EditSongInnerProps, EditSongOuterProps>(
     },
   }),
 
-)(({ song, rows, cols, setChords, onLyricsChange, onLyricsKeyDown }) =>
+)(({ song, disabled, rows, cols, setChords, onLyricsChange, onLyricsKeyDown }) =>
   <div className={$.EditSong}>
-    <div>
-      <textarea rows={rows} cols={cols} value={song.lyrics} onChange={onLyricsChange} onKeyDown={onLyricsKeyDown} />
-      <ChordsOverlay rows={rows} cols={cols} chords={song.chords} setChords={setChords} />
-    </div>
+    <textarea disabled={disabled} rows={rows} cols={cols} value={song.lyrics} onChange={onLyricsChange} onKeyDown={onLyricsKeyDown} />
+    <ChordsOverlay disabled={disabled} rows={rows} cols={cols} chords={song.chords} setChords={setChords} />
   </div>
 )
+
+export default Song

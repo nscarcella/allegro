@@ -4,8 +4,7 @@ $dropzone-height: 1.75em;
 
 .EditSong {
   position:relative;
-  font-size: 16px;
-  
+
   textarea {
     font-size: 16px;
     font-family: $font-monospace;
@@ -14,6 +13,11 @@ $dropzone-height: 1.75em;
     border: none;
     outline: none;
     resize: none;
+
+    &:disabled {
+      color: $color-background-font;
+      background-color: $color-background;
+    }
   }
 }
 
@@ -36,13 +40,19 @@ $dropzone-height: 1.75em;
   }
 
   .chord {
+    cursor: default;
+    font-size: 16px;
     font-family: $font-monospace;
     font-weight: bold;
     color: blue;
     z-index: 1;
-    cursor: move;
+
+    &.draggable {
+      cursor: move;
+    }
     
     &.dragging {
+      cursor: move;
       opacity: 0.5;
       pointer-events: none;
       position: fixed;
@@ -51,6 +61,8 @@ $dropzone-height: 1.75em;
   
   .dropzone {
     cursor: move;
+    font-family: $font-monospace;
+    font-weight: bold;
     background-color: #DDDDDD;
   }
 }
