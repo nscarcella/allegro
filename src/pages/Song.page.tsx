@@ -1,8 +1,9 @@
+import Loading from '@components/Loading'
 import SongEditor from '@components/Song'
 import { readFile } from '@services/google'
 import { History } from 'history'
-import { ChangeEventHandler } from 'react'
 import * as React from 'react'
+import { ChangeEventHandler } from 'react'
 import { FiEdit as EditIcon, FiSave as SaveIcon } from 'react-icons/fi'
 import { withRouter } from 'react-router'
 import { compose, lifecycle, withHandlers, withState } from 'recompose'
@@ -80,7 +81,7 @@ const SongPage = compose<SongPageInnerProps, SongPageOuterProps>(
             </div>
           </div>
         )
-    ) : 'Aguantá'  // TODO:
+    ) : <Loading />
   }</div>
 
 )

@@ -1,0 +1,23 @@
+@import '~src/theme';
+
+.Loading {
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: rgba(0,0,0,0.30);
+  text-align: center;
+  overflow: hidden;
+
+  svg {
+    width: $u3;
+    height: auto;
+    margin: auto auto;
+    color: $color-primary-font;
+    animation:spin 0.5s linear infinite;
+    
+    @keyframes spin { 100% { transform:rotate(45deg); } }
+  }
+}
